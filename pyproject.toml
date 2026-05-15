@@ -8,3 +8,8 @@ dependencies = [
     "django>=6.0.5",
     "gunicorn>=26.0.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.13",
+]
