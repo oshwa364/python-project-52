@@ -1,3 +1,4 @@
+import os
 """
 Django settings for task_manager project.
 
@@ -27,8 +28,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'webserver',
 ]
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
