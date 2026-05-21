@@ -1,0 +1,46 @@
+{% load django_bootstrap5 %}
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Менеджер задач{% endblock %}</title>
+    {% bootstrap_css %}
+</head>
+
+<body class="bg-light d-flex flex-column min-vh-100">
+    <div class="container mt-4">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'task_manager' %}">Менеджер задач</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users' %}">Пользователи</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'sign_in' %}">Вход</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'register' %}">Регистрация</a>
+            </li>
+        </ul>
+    </div>
+
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+<footer class="mt-auto py-3">
+    <div class="container border-top pt-3">
+        <a href="https://ru.hexlet.io/" target="_blank">
+            Hexlet
+        </a>
+    </div>
+</footer>
+
+</body>
+</html>
