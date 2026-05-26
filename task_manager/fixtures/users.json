@@ -1,0 +1,38 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$XNQiUeBie9NoPoiDpY01mW$PEQURYgbSuOU2jRhKbT3dqL+fUR/XhKLmbb4rTVCudQ=",
+    "last_login": "2026-05-23T17:56:57.697Z",
+    "is_superuser": true,
+    "username": "zaza",
+    "first_name": "my",
+    "last_name": "name",
+    "email": "asd@asfd.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-05-21T18:10:39Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$k8UX2qpzgtVAoHzFraVFx6$Oz4FDyWz+RrhI4J9YKPTUjEvylcXSt7nAWsUQqtwpWg=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "aa",
+    "last_name": "bb",
+    "email": "sdf33@sdfgs.org",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-05-22T22:19:21.308Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]

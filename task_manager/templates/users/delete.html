@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load django_bootstrap5 %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h1 class="container mt-4">{{ title }}</h1>
+
+    <form method="post" class="container mt-4">
+        <p>Вы уверены, что хотите удалить {{ user.first_name }} {{ user.last_name }}?</p>
+        {% csrf_token %}
+        {% bootstrap_button button_text button_type="submit" button_class="btn btn-danger" %}
+    </form>
+{% endblock %}

@@ -1,0 +1,35 @@
+<nav class="container navbar navbar-expand-md mb-3">
+    <a class="navbar-brand" href="{% url 'root' %}">Менеджер задач</a>
+
+    <div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users_list' %}">Пользователи</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'root' %}">Статусы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'root' %}">Метки</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'root' %}">Задачи</a>
+                </li>
+                <li>
+                    <form action="{% url 'logout' %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="nav-link btn btn-link">Выход</button>
+                </form>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login' %}">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sign_up' %}">Регистрация</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

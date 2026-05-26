@@ -1,12 +1,20 @@
 build:
 	./build.sh
+	
 render-start:
 	gunicorn task_manager.wsgi
+
 start:
 	uv run manage.py runserver 0.0.0.0:8000
+
 migrate:
 	uv run manage.py migrate
+
 install:
 	uv sync
+
 lint:
 	uv run ruff check
+
+test:
+	uv run manage.py test
