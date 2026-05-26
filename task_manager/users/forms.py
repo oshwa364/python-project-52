@@ -1,7 +1,6 @@
 from django import forms
-from django.contrib.auth.models import User
-
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class UserCreateForm(UserCreationForm):
@@ -20,7 +19,8 @@ class UserCreateForm(UserCreationForm):
         max_length=150,
         required=True,
         label='Имя пользователя',
-        help_text='Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_.',
+        help_text='Обязательное поле. Не более 150 символов. ' 
+        'Только буквы, цифры и символы @/./+/-/_.',
     )
     password1 = forms.CharField(
         min_length=3,

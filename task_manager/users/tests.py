@@ -1,6 +1,7 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
-from django.contrib.auth.models import User
+
 
 # Create your tests here.
 class TestCreateUser(TestCase):
@@ -27,6 +28,7 @@ class TestCreateUser(TestCase):
 
 class TestUpdateUser(TestCase):
     fixtures = ['users.json']
+
     def test_update_exist_user(self):
         user2 = User.objects.get(id=2)
         self.client.force_login(user2)
@@ -59,6 +61,7 @@ class TestUpdateUser(TestCase):
 
 class TestDeleteUser(TestCase):
     fixtures = ['users.json']
+
     def test_delete_exist_user(self):
         user2 = User.objects.get(id=2)
         self.client.force_login(user2)
