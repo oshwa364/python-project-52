@@ -26,6 +26,19 @@ class TestCreateUser(TestCase):
         )
 
 
+class TestListStatuses(TestCase):
+    fixtures = ['users.json']
+    def test_users_content(self):
+        url = reverse('users_list')
+        response = self.client.get(url)
+
+        self.assertQuerySetEqual(
+            response.context['users'],
+            User.objects.all(),
+            ordered=False,
+        )
+
+
 class TestUpdateUser(TestCase):
     fixtures = ['users.json']
 
