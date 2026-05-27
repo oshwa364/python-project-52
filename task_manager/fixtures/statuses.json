@@ -1,0 +1,20 @@
+[
+{
+  "model": "statuses.status",
+  "pk": 1,
+  "fields": {
+    "name": "First1St",
+    "created_at": "2026-05-27T16:01:13.508Z",
+    "updated_at": "2026-05-27T16:21:46.351Z"
+  }
+},
+{
+  "model": "statuses.status",
+  "pk": 2,
+  "fields": {
+    "name": "Status2",
+    "created_at": "2026-05-27T16:25:13.839Z",
+    "updated_at": "2026-05-27T16:25:13.839Z"
+  }
+}
+]
