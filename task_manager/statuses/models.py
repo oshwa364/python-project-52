@@ -9,3 +9,6 @@ class Status(models.Model):
     class Meta:
         verbose_name = 'Task status'
         ordering = ['id']
+
+    def __str__(self):
+        return self.name
