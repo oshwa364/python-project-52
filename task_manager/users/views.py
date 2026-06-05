@@ -3,7 +3,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.mixins import UserPermissionEditDeleteMixin
+from task_manager.mixins import UserPermissionEditDeleteMixin, DeleteProtectionMixin
 from task_manager.users.forms import UserCreateForm, UserUpdateForm
 
 
@@ -40,7 +40,7 @@ class UserUpdateView(UserPermissionEditDeleteMixin,
     }
 
 
-class UserDeleteView(UserPermissionEditDeleteMixin,
+class UserDeleteView(UserPermissionEditDeleteMixin, DeleteProtectionMixin,
                      SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'users/delete.html'
