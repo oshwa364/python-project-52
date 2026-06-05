@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase
 from django.urls import reverse
-from django.core.exceptions import ObjectDoesNotExist
 
 
 class TestUser(TestCase):
     fixtures = ['users.json']
+
     def setUp(self):
         self.users_count = User.objects.count()
 

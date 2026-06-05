@@ -1,9 +1,11 @@
-from .models import Status
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from task_manager.mixins import AuthRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
+from task_manager.mixins import AuthRequiredMixin
+
 from .forms import StatusForm
+from .models import Status
 
 
 class StatusListView(AuthRequiredMixin, ListView):

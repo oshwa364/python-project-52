@@ -1,11 +1,13 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from django.urls import reverse
+
 from .models import Status
-from django.contrib.auth.models import User
 
 
 class TestStatus(TestCase):
     fixtures = ['users.json', 'statuses.json']
+
     def setUp(self):
         user = User.objects.get(id=1)
         self.client.force_login(user)
@@ -43,7 +45,6 @@ class TestListStatuses(TestStatus):
 
 class TestUpdateStatus(TestStatus):
     def test_update_exist_status(self):
-        status1 = Status.objects.get(id=1)
         url = reverse('status_update', kwargs={'pk': 1})
         status_data = {
             'name': 'new_status_name',

@@ -1,10 +1,17 @@
-from .models import Task
-from .forms import TaskForm
-from django.urls import reverse_lazy
-from task_manager.mixins import AuthRequiredMixin, AuthorPermissionMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.views.generic import CreateView, DeleteView, ListView, UpdateView, DetailView
-from django.contrib.auth.models import User
+from django.urls import reverse_lazy
+from django.views.generic import (
+    CreateView,
+    DeleteView,
+    DetailView,
+    ListView,
+    UpdateView,
+)
+
+from task_manager.mixins import AuthorPermissionMixin, AuthRequiredMixin
+
+from .forms import TaskForm
+from .models import Task
 
 
 class TaskListView(AuthRequiredMixin, ListView):
@@ -53,12 +60,12 @@ class TaskUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class TaskDeleteView(AuthRequiredMixin, AuthorPermissionMixin, SuccessMessageMixin, DeleteView):
+class TaskDeleteView(AuthRequiredMixin, AuthorPermissionMixin,
+                     SuccessMessageMixin, DeleteView):
     template_name = 'tasks/delete.html'
     model = Task
     success_url = reverse_lazy('tasks_list')
     success_message = 'Задача успешно удалена'
-    permission_message = 'Нельзя удалить пользователя, потому что ему назначена задача'
     extra_context = {
         'title': 'Удаление задачи',
         'button_text': 'Да, удалить',

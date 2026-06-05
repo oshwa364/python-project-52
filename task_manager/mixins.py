@@ -1,8 +1,8 @@
 from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin, LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.db.models import ProtectedError
 
 
 class UserPermissionEditDeleteMixin(UserPassesTestMixin):
@@ -36,7 +36,8 @@ class AuthorPermissionMixin:
     
 
 class DeleteProtectionMixin:
-    protected_message = 'Нельзя удалить пользователя, потому что ему назначена задача'
+    protected_message = 'Нельзя удалить пользователя, ' \
+    'потому что ему назначена задача'
 
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
