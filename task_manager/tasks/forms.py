@@ -10,5 +10,9 @@ class TaskForm(forms.ModelForm):
             'name',
             'description',
             'status',
+            'labels',
             'executor',
         )
+        widgets = {
+            'labels': forms.CheckboxSelectMultiple(),
+        }

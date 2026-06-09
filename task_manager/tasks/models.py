@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from task_manager.labels.models import Label
 from task_manager.statuses.models import Status
 
 
@@ -28,6 +29,13 @@ class Task(models.Model):
         related_name='tasks',
         verbose_name='Статус',
     )
+    labels = models.ManyToManyField(
+        Label,
+        through='TaskLabel',
+        blank=True,
+        related_name='tasks',
+        verbose_name='Метка',
+    )
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
@@ -41,3 +49,8 @@ class Task(models.Model):
 
     class Meta:
         verbose_name = 'Task'
+
+
+class TaskLabel(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE)
+    label = models.ForeignKey(Label, on_delete=models.PROTECT)

@@ -36,13 +36,10 @@ class AuthorPermissionMixin:
     
 
 class DeleteProtectionMixin:
-    protected_message = 'Нельзя удалить пользователя, ' \
-    'потому что ему назначена задача'
-
     def post(self, request, *args, **kwargs):
         self.object = self.get_object()
         try:
             super().post(request, *args, **kwargs)
         except ProtectedError:
-            messages.error(request, self.protected_message)
-        return redirect(reverse_lazy('users_list'))
+            messages.error(request, self.protection_message)
+        return redirect(self.protection_url)

@@ -2,7 +2,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from task_manager.mixins import AuthRequiredMixin
+from task_manager.mixins import AuthRequiredMixin, DeleteProtectionMixin
 
 from .forms import StatusForm
 from .models import Status
@@ -38,11 +38,14 @@ class StatusUpdateView(AuthRequiredMixin, SuccessMessageMixin, UpdateView):
     }
 
 
-class StatusDeleteView(AuthRequiredMixin, SuccessMessageMixin, DeleteView):
+class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
+                       SuccessMessageMixin, DeleteView):
     model = Status
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses_list')
     success_message = 'Статус успешно удален'
+    protection_message = 'Нельзя удалить статус, так как он назначен задаче'
+    protection_url = reverse_lazy('statuses_list')
     extra_context = {
         'title': 'Удаление статуса',
         'button_text': 'Да, удалить'

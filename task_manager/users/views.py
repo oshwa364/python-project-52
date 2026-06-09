@@ -51,6 +51,9 @@ class UserDeleteView(UserPermissionEditDeleteMixin, DeleteProtectionMixin,
     permission_url = reverse_lazy('users_list')
     success_message = 'Пользователь успешно удален'
     permission_message = 'У вас нет прав для изменения'
+    protection_message = 'Нельзя удалить пользователя, ' \
+                         'потому что ему назначена задача'
+    protection_url = reverse_lazy('users_list')
     extra_context = {
         'title': 'Удаление пользователя',
         'button_text': 'Да, удалить',
