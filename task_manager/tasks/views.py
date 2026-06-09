@@ -4,22 +4,25 @@ from django.views.generic import (
     CreateView,
     DeleteView,
     DetailView,
-    ListView,
     UpdateView,
 )
+from django_filters.views import FilterView
 
 from task_manager.mixins import AuthorPermissionMixin, AuthRequiredMixin
 
+from .filter import TaskFilter
 from .forms import TaskForm
 from .models import Task
 
 
-class TaskListView(AuthRequiredMixin, ListView):
+class TaskListView(AuthRequiredMixin, FilterView):
     template_name = 'tasks/tasks.html'
     model = Task
     context_object_name = 'tasks'
+    filterset_class = TaskFilter
     extra_context = {
         'title': 'Задачи',
+        'button_text': 'Показать',
     }
 
 

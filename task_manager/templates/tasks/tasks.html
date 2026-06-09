@@ -8,7 +8,16 @@
     <div class="container">
         <a href="{% url 'task_create' %}" class="btn btn-primary">Создать задачу</a>
     </div>
+
     
+    <div class="container card mb-3">
+        <div class="card-body bg-light">
+            <form class="center" method="get">
+              {% bootstrap_form filter.form field_class="me-3" %}
+              {% bootstrap_button button_text button_type="submit" button_class="btn btn-primary" %}
+            </form>
+        </div>
+    </div>
 
     <table class="table table-striped container mt-4">
         <thead class="thead-dark">
