@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+    <h1 class="container my-4">{{ title }}</h1>
+    <div class="container">
+        <a href="{% url 'label_create' %}" class="btn btn-primary">Создать метку</a>
+    </div>
+
+    <table class="table table-striped container mt-4">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Имя</th>
+                <th>Дата создания</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% for label in labels %}
+                <tr>
+                    <td>{{ label.id }}</td>
+                    <td>{{ label.name }}</td>
+                    <td>{{ label.created_at | date:"d.m.Y H:i" }}</td>
+                    <td>
+                          <a href="{% url 'label_update' label.id %}">Изменить</a>
+                          <br>
+                          <a href="{% url 'label_delete' label.id %}">Удалить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
