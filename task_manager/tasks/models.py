@@ -39,7 +39,7 @@ class Task(models.Model):
     executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='assigned_tasks',
+        related_name='executor',
         verbose_name='Исполнитель',
     )
     created_at = models.DateTimeField(
