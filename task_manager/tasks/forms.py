@@ -13,6 +13,3 @@ class TaskForm(forms.ModelForm):
             'labels',
             'executor',
         )
-        widgets = {
-            'labels': forms.CheckboxSelectMultiple(),
-        }

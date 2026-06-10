@@ -7,7 +7,7 @@ from task_manager.mixins import (
     DeleteProtectionMixin,
     UserPermissionEditDeleteMixin,
 )
-from task_manager.users.forms import UserCreateForm, UserUpdateForm
+from task_manager.users.forms import UserForm
 
 
 class UserListView(ListView):
@@ -18,7 +18,7 @@ class UserListView(ListView):
 
 class UserCreateView(SuccessMessageMixin, CreateView):
     model = User
-    form_class = UserCreateForm
+    form_class = UserForm
     template_name = 'form.html'
     success_url = reverse_lazy('login')
     success_message = 'Пользователь успешно зарегистрирован'
@@ -31,7 +31,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 class UserUpdateView(UserPermissionEditDeleteMixin,
                     SuccessMessageMixin, UpdateView):
     model = User
-    form_class = UserUpdateForm
+    form_class = UserForm
     template_name = 'form.html'
     success_url = reverse_lazy('users_list')
     permission_url = reverse_lazy('users_list')

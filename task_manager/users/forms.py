@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 
-class UserCreateForm(UserCreationForm):
+class UserForm(UserCreationForm):
 
     first_name = forms.CharField(
         max_length=150,
@@ -43,27 +43,4 @@ class UserCreateForm(UserCreationForm):
             'username',
             'password1',
             'password2',
-        )
-
-
-class UserUpdateForm(forms.ModelForm):
-
-    first_name = forms.CharField(
-        max_length=150,
-        required=False,
-        label='Имя',
-    )
-    last_name = forms.CharField(
-        max_length=150,
-        required=False,
-        label='Фамилия',
-    )
-    username = forms.CharField(label='Имя пользователя')
-
-    class Meta:
-        model = User
-        fields = (
-            'first_name',
-            'last_name',
-            'username',
         )
