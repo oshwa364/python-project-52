@@ -44,7 +44,7 @@ class StatusDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
     template_name = 'statuses/delete.html'
     success_url = reverse_lazy('statuses_list')
     success_message = 'Статус успешно удален'
-    protection_message = 'Нельзя удалить статус, так как он назначен задаче'
+    protection_message = 'Невозможно удалить статус, потому что он используется'
     protection_url = reverse_lazy('statuses_list')
     extra_context = {
         'title': 'Удаление статуса',

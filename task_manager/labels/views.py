@@ -47,7 +47,7 @@ class LabelDeleteView(AuthRequiredMixin, DeleteProtectionMixin,
     template_name = 'labels/delete.html'
     success_url = reverse_lazy('labels_list')
     success_message = 'Метка успешно удалена'
-    protection_message = 'Невозможно удалить метку'
+    protection_message = 'Невозможно удалить метку, потому что она используется'
     protection_url = reverse_lazy('labels_list')
     extra_context = {
         'title': 'Удаление метки',
