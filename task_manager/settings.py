@@ -35,6 +35,7 @@ LANGUAGE_CODE = 'ru'
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'webserver',
+    'localhost',
 ]
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
